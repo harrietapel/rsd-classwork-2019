@@ -15,11 +15,19 @@ def overlap_time(obs1, obs2):
         for tra, trb in obs2:
             low = max(tr0, tra)
             high = min(tr1, trb)
-            ot.append((low, high))
+            if low<high:
+                ot.append((low, high))
     return ot
 
 
 if __name__ == "__main__":
-    large = time_range("2010-01-12 10:00:00", "2010-01-12 12:00:00")
-    short = time_range("2010-01-12 10:30:00", "2010-01-12 10:45:00", 2, 60)
-    print(overlap_time(large, short))
+    first = time_range("2010-10-31 00:00:00", "2010-10-31 1:50:00", 2, 600)
+    second = time_range("2010-10-31 00:30:00", "2010-10-31 1:55:00", 2, 2100)
+    print('overlap2',overlap_time(first, second))
+    for i in range (len(overlap_time(first, second))):
+        t0_s = datetime.datetime.strptime(overlap_time(first, second)[i][0], "%Y-%m-%d %H:%M:%S")
+        t1_s = datetime.datetime.strptime(overlap_time(first, second)[i][1], "%Y-%m-%d %H:%M:%S")
+        result = (t1_s - t0_s).total_seconds()
+        print(result)
+
+
