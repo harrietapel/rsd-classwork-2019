@@ -16,7 +16,7 @@ def test_many(test_input, expected):
      assert result == expected
 
 def test_range_backwards():
-     with pytest.raises(ValueError, match=r"End date should be after the start date for the interval"):
+     with pytest.raises(ValueError, match=r"End date should be after the start date for the date interval"):
          time_range("2019-10-31 00:00:00", "2019-10-30 00:50:00", 3, 600)
 
 def test_given_input():
