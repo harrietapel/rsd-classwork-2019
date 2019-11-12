@@ -5,5 +5,4 @@ python:
 install:
   - pip install requests pyyaml pytest pytest-cov
 # command to run tests
-script:
-  - pytest --cov
+script: pytest --cov
